@@ -203,7 +203,7 @@ Setup Instructions (Fresh VPS)
 sudo apt update
 sudo apt install docker.io python3 python3-pip python3-venv git apache2-utils -y
 2. Clone Repository
-git clone YOUR_GITHUB_REPO_URL
+git clone https://github.com/Myches/hng-ddos-project.git
 cd hng-ddos-project
 3.cp .env.example .env
 # Edit .env and paste your real Slack webhook URL
