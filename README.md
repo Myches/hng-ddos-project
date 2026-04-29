@@ -205,9 +205,13 @@ sudo apt install docker.io python3 python3-pip python3-venv git apache2-utils -y
 2. Clone Repository
 git clone YOUR_GITHUB_REPO_URL
 cd hng-ddos-project
-3. Start Nextcloud + Nginx
+3.cp .env.example .env
+# Edit .env and paste your real Slack webhook URL
+cp detector/config.example.yaml detector/config.yaml
 docker-compose up -d
-4. Start Detector
+4. Start Nextcloud + Nginx
+docker-compose up -d
+5. Start Detector
 cd detector
 python3 -m venv venv
 source venv/bin/activate
@@ -232,11 +236,11 @@ Baseline Dashboard
 
 Blog Post
 
-PASTE_YOUR_BLOG_LINK_HERE
+https://medium.com/@mikeandorful11/how-i-built-a-real-time-ddos-detection-tool-with-python-nginx-docker-and-slack-1fbfca1622a7
 
 GitHub Repository
 
-PASTE_YOUR_PUBLIC_GITHUB_REPO_LINK_HERE
+https://github.com/Myches/hng-ddos-project.git
 
 Final Summary
 
