@@ -1,0 +1,13 @@
+.env
+venv/
+__pycache__/
+*.pyc
+*.log
+
+
+# Contains secrets — never commit the real config
+detector/config.yaml
+
+# Environment variable files
+.env
+*.env

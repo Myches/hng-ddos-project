@@ -1,0 +1,37 @@
+services:
+  nextcloud:
+    image: kefaslungu/hng-nextcloud
+    container_name: nextcloud
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - HNG-nginx-logs:/var/log/nginx
+    depends_on:
+      - nextcloud
+
+  detector:
+    build: ./detector
+    container_name: detector
+    restart: always
+    # Needs host networking to run iptables on the host firewall
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      # Mount the shared nginx log volume read-only
+      - HNG-nginx-logs:/var/log/nginx:ro
+      - ./detector/config.yaml:/app/config.yaml
+      - ./detector/audit.log:/app/audit.log
+    environment:
+      - SLACK_WEBHOOK=${SLACK_WEBHOOK}
+    depends_on:
+      - nginx
+
+volumes:
+  HNG-nginx-logs:
