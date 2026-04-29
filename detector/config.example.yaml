@@ -1,0 +1,22 @@
+# Path to nginx access log — matches the volume mount inside the detector container
+log_file: /var/log/nginx/hng-access.log
+
+dashboard_host: 0.0.0.0
+dashboard_port: 5000
+
+slack_webhook: ""  # Set via SLACK_WEBHOOK env var
+
+# Detection thresholds
+zscore_threshold: 3.0
+multiplier_threshold: 5.0
+
+# Error surge — tighten z-score when errors exceed this multiple of baseline
+error_multiplier: 3.0
+tightened_zscore: 2.0
+
+# Backoff ban schedule (seconds) — last entry applies to all subsequent strikes
+ban_schedule:
+  - 600       # 1st ban: 10 minutes
+  - 1800      # 2nd ban: 30 minutes
+  - 7200      # 3rd ban: 2 hours
+  - "permanent"  # 4th+ ban: permanent

@@ -1,0 +1,19 @@
+log_file: /var/lib/docker/volumes/hng-ddos-project_HNG-nginx-logs/_data/hng-access.log
+
+dashboard_host: 0.0.0.0
+dashboard_port: 5000
+
+slack_webhook: "https://hooks.slack.com/services/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"
+
+zscore_threshold: 3.0
+multiplier_threshold: 5.0
+
+error_multiplier: 3.0
+tightened_zscore: 2.0
+
+ban_schedule:
+  - 600
+  - 1800
+  - 7200
+  - "permanent"
+
